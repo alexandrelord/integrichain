@@ -1,0 +1,19 @@
+openapi: 3.0.0
+info:
+  title: "Integrichain API"
+  description: "Integrichain technical test"
+  version: 1.0.0
+
+servers:
+ - url: "/api"
+
+paths:
+  /books:
+    get:
+      operationId: "books.read_all"
+      tags:
+        - "Books"
+      summary: "Read the list of books"
+      responses:
+        "200":
+          description: "Successfully read books list"
