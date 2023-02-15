@@ -73,3 +73,26 @@ paths:
           description: "Successfully read book"
         "404":
           description: "Book not found"
+    put:
+      operationId: "books.update"
+      tags:
+        - "Books"
+      summary: "Update a book"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              x-body-name: "book"
+              $ref: "#/components/schemas/Book"
+      responses:
+        "204":
+          description: "Successfully updated book"
+        "404":
+          description: "Book not found"

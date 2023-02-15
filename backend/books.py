@@ -44,3 +44,14 @@ def create(book):
         return book, 201
     else:
         abort(409, f'Book with title {title} already exists')
+
+# Update a book
+def update(id, book):
+    book_to_update = [book for book in BOOKS if book['id'] == id]
+    if book_to_update:
+        book_to_update[0]['title'] = book.get('title')
+        book_to_update[0]['author'] = book.get('author')
+        book_to_update[0]['read'] = book.get('read')
+        return book_to_update[0]
+    else:
+        abort(404, f'Book with id {id} not found')
