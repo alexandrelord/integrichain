@@ -96,3 +96,19 @@ paths:
           description: "Successfully updated book"
         "404":
           description: "Book not found"
+    delete:
+      operationId: "books.delete"
+      tags:
+        - "Books"
+      summary: "Delete a book"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "Successfully deleted book"
+        "404":
+          description: "Book not found"

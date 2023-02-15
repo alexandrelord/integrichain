@@ -1,4 +1,4 @@
-from flask import abort
+from flask import abort, make_response, jsonify
 import uuid
 
 BOOKS = [
@@ -53,5 +53,14 @@ def update(id, book):
         book_to_update[0]['author'] = book.get('author')
         book_to_update[0]['read'] = book.get('read')
         return book_to_update[0]
+    else:
+        abort(404, f'Book with id {id} not found')
+
+# Delete a book
+def delete(id):
+    book = [book for book in BOOKS if book['id'] == id]
+    if book:
+        BOOKS.remove(book[0])
+        return make_response(jsonify({'message': f'Book {id} deleted'}), 200)
     else:
         abort(404, f'Book with id {id} not found')
