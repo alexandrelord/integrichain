@@ -39,6 +39,23 @@ paths:
           description: "Successfully read books list"
         "404":
           description: "No books found"
+    post:
+      operationId: "books.create"
+      tags:
+        - "Books"
+      summary: "Create a new book"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              x-body-name: "book"
+              $ref: "#/components/schemas/Book"
+      responses:
+        "201":
+          description: "Successfully created book"
+        "409":
+          description: "Book already exists"
   /books/{id}:
     get:
       operationId: "books.read_one"
