@@ -6,7 +6,7 @@
         <a routerLink="/books/add">Add Book</a>  
     </button>
     
-    <table *ngIf="books">
+    <table *ngIf="books && books.length > 0">
         <tr>
             <th>Title</th>
             <th>Author</th>
@@ -21,11 +21,11 @@
                 <button class="update_btn" type="button">
                     <a [routerLink]="['books', 'update', book.id]">Update</a>
                 </button>
-                <button class="delete_btn" type="button">Delete</button>
+                <button class="delete_btn" type="button" (click)="deleteBook(book.id)">Delete</button>
             </td>
             
         </tr>
     </table>
-    <p *ngIf="!books">No Books Found</p>
+    <p *ngIf="!books || books.length == 0">No Books Found</p>
     </div>
     

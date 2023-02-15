@@ -28,6 +28,15 @@ export class BooksComponent implements OnInit {
     })
   }
 
+  deleteBook(id: string): void {
+    this.bookService.deleteBook(id).subscribe({
+      next: books => {
+        this.getBooks();
+      },
+      error: (response) => {
+        console.log(response);
+      }
+    })
+  }
   
-
 }
