@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Book } from 'src/app/models/book.models';
 import { BookService } from 'src/app/services/book.service';
 
@@ -16,7 +17,7 @@ export class AddBookComponent implements OnInit {
     read: false
   };
 
-  constructor(private bookService: BookService) { }
+  constructor(private bookService: BookService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,7 +25,7 @@ export class AddBookComponent implements OnInit {
   addBook() {
     this.bookService.addBook(this.addBookRequest).subscribe({
        next: (book) => {
-         console.log(book);
+         this.router.navigate(['/']);
        },
        error: (response) => {
          console.log(response);
