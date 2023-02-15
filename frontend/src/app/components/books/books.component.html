@@ -1,0 +1,31 @@
+<div class="container">
+
+    <h1>Books</h1> 
+    <hr>
+    <button class="add_btn" type="button">
+        Add Book
+    </button>
+    
+    <table *ngIf="books">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Read?</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let book of books">
+            <td>{{book.title}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.read ? 'Yes' : 'No'}}</td>
+            <td>
+                <button class="update_btn" type="button">
+                    Update
+                </button>
+                <button class="delete_btn" type="button">Delete</button>
+            </td>
+            
+        </tr>
+    </table>
+    <p *ngIf="!books">No Books Found</p>
+    </div>
+    
