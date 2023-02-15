@@ -1,3 +1,4 @@
+from flask import abort
 import uuid
 
 BOOKS = [
@@ -23,3 +24,10 @@ BOOKS = [
 
 def read_all():
     return BOOKS
+
+def read_one(id):
+    book = [book for book in BOOKS if book['id'] == id]
+    if book:
+        return book[0]
+    else:
+        abort(404, f'Book with id {id} not found')

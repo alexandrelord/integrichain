@@ -7,6 +7,26 @@ info:
 servers:
  - url: "/api"
 
+components:
+  schemas:
+    Book:
+      type: object
+      properties:
+        title:
+          type: string
+        author:
+          type: string
+        read:
+          type: boolean
+          default: false
+  parameters:
+    id:
+      name: id
+      in: path
+      required: true
+      schema:
+        type: string
+
 paths:
   /books:
     get:
@@ -17,3 +37,22 @@ paths:
       responses:
         "200":
           description: "Successfully read books list"
+        "404":
+          description: "No books found"
+  /books/{id}:
+    get:
+      operationId: "books.read_one"
+      tags:
+        - "Books"
+      summary: "Read a book"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "Successfully read book"
+        "404":
+          description: "Book not found"
