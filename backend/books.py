@@ -1,66 +1,63 @@
 from flask import abort, make_response, jsonify
 import uuid
-
-BOOKS = [
-    {
-        'id': uuid.uuid4().hex,
-        'title': 'On the Road',
-        'author': 'Jack Kerouac',
-        'read': True
-    },
-    {
-        'id': uuid.uuid4().hex,
-        'title': 'Harry Potter and the Philosopher\'s Stone',
-        'author': 'J. K. Rowling',
-        'read': False
-    },
-    {
-        'id': uuid.uuid4().hex,
-        'title': 'Green Eggs and Ham',
-        'author': 'Dr. Seuss',
-        'read': True
-    }
-]
+from config import db
+from models import Book, book_schema, books_schema
 
 # Read all books
 def read_all():
-    return BOOKS
+    # Use the model to query the database
+    books = Book.query.all()
+    # Serialize the data for the response
+    return books_schema.dump(books)
 
 # Read one book
 def read_one(id):
-    book = [book for book in BOOKS if book['id'] == id]
-    if book:
-        return book[0]
-    else:
+    book = Book.query.get(id)
+    
+    if book is None:
         abort(404, f'Book with id {id} not found')
+    else:
+        return book_schema.dump(book)
 
 # Create a book
 def create(book):
     title = book.get('title')
 
-    if title and title not in [book['title'] for book in BOOKS]:
-        book['id'] = uuid.uuid4().hex
-        BOOKS.append(book)
-        return book, 201
+    existing_book = Book.query.filter(Book.title == title).one_or_none()
+
+    if existing_book is None:
+        new_book = Book(
+            id=uuid.uuid4().hex,
+            title=title,
+            author=book.get('author'),
+            read=book.get('read')
+        )
+        db.session.add(new_book)
+        db.session.commit()
+        return book_schema.dump(new_book)
     else:
         abort(409, f'Book with title {title} already exists')
 
 # Update a book
 def update(id, book):
-    book_to_update = [book for book in BOOKS if book['id'] == id]
-    if book_to_update:
-        book_to_update[0]['title'] = book.get('title')
-        book_to_update[0]['author'] = book.get('author')
-        book_to_update[0]['read'] = book.get('read')
-        return book_to_update[0]
-    else:
+    update_book = Book.query.get(id)
+
+    if update_book is None:
         abort(404, f'Book with id {id} not found')
+    else:
+        update_book.title = book.get('title')
+        update_book.author = book.get('author')
+        update_book.read = book.get('read')
+        db.session.commit()
+        return book_schema.dump(update_book)
 
 # Delete a book
 def delete(id):
-    book = [book for book in BOOKS if book['id'] == id]
-    if book:
-        BOOKS.remove(book[0])
-        return make_response(jsonify({'message': f'Book {id} deleted'}), 200)
-    else:
+    book = Book.query.get(id)
+
+    if book is None:
         abort(404, f'Book with id {id} not found')
+    else:
+        db.session.delete(book)
+        db.session.commit()
+        return make_response(jsonify({'message': f'Book {id} deleted'}), 200)
