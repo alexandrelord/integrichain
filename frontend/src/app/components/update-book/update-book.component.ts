@@ -34,6 +34,9 @@ export class UpdateBookComponent implements OnInit {
       this.bookService.getBook(id).subscribe({
         next: book => {
           this.book = book;
+        },
+        error: (response) => {
+          console.log(response);
         }
       })
     }
@@ -42,6 +45,9 @@ export class UpdateBookComponent implements OnInit {
       this.bookService.updateBook(this.book.id, this.book).subscribe({
         next: book => {
           this.router.navigate(['/']);
+        },
+        error: (response) => {
+          console.log(response);
         }
       })
     }
