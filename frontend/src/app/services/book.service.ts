@@ -16,7 +16,15 @@ export class BookService {
     return this.http.get<Book[]>(API_URL);
   }
 
+  getBook(id: string): Observable<Book> {
+    return this.http.get<Book>(`${API_URL}/${id}`);
+  }
+
   addBook(addBookRequest: Book): Observable<Book> {
     return this.http.post<Book>(API_URL, addBookRequest);
+  }
+
+  updateBook(id: string, updateBookRequest: Book): Observable<Book> {
+    return this.http.put<Book>(`${API_URL}/${id}`, updateBookRequest);
   }
 }

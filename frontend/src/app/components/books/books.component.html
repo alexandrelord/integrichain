@@ -19,7 +19,7 @@
             <td>{{book.read ? 'Yes' : 'No'}}</td>
             <td>
                 <button class="update_btn" type="button">
-                    Update
+                    <a [routerLink]="['books', 'update', book.id]">Update</a>
                 </button>
                 <button class="delete_btn" type="button">Delete</button>
             </td>
