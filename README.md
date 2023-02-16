@@ -13,7 +13,7 @@
 
 ## Prerequisites
 
-Make sure you have the following installed on your machine:
+Make sure you have the following installed on your machine if you decide to run the app locally on your machine:
 
 1. Python3.9.6 (https://www.python.org/downloads/)
 2. Angular CLI: 14.2.10 (https://angular.io/cli)
