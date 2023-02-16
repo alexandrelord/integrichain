@@ -9,6 +9,7 @@
 5. [Backend](#backend)
 6. [Frontend](#frontend)
 7. [Swagger](#swagger)
+8. [Icebox](#icebox)
 
 ## Prerequisites
 
@@ -87,4 +88,8 @@ Server will be running on http://localhost:4200
 
 Swagger documentation is available at http://localhost:5000/api/ui
 
+
+## Icebox
+1. Implement integration tests(pytest or unittest)
+2. Create Postman test scenarios to run a regression test on every endpoint
 
