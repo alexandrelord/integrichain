@@ -29,23 +29,14 @@ table th {
   color: rgb(255, 255, 255);
 }
 
-.update_btn {
-  background-color: rgb(246, 185, 51);
-}
-
-.update_btn a {
-  color: black;
-  text-decoration: none;
-}
-
-.delete_btn {
-  background-color: rgb(230, 0, 0);
+.btns_container {
+  display: flex;
+  justify-content: space-evenly;
 }
 
 .add_btn {
-  background-color: rgb(81, 162, 87);
-  margin-top: 16px;
   margin-bottom: 16px;
 }
+
 
 

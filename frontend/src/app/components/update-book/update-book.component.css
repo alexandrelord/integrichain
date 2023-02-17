@@ -10,27 +10,11 @@ h1 {
 form {
     display: flex;
     flex-direction: column;
+    margin-top: 16px;
 }
 
-input {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-}
-    
-select {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    box-sizing: border-box;
-}
-
-.update_btn {
-    background-color: rgb(246, 185, 51);
-    color: black;
-}
-
-.back_btn {
-    background-color: rgb(151, 81, 162);
+.btns_container {
+  display: flex;
+  justify-content: left;
+  gap: 16px;
 }

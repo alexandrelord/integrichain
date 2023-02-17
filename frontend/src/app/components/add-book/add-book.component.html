@@ -2,27 +2,28 @@
     <h1>Add Book</h1>
     <hr>
     <form #form="ngForm" (ngSubmit)="addBook()" ngNativeValidate autocomplete="off">
-        <div>
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" placeholder="Cien Años de Soledad" [(ngModel)] = "addBookRequest.title" required>
-        </div>
-        <div>
-            <label for="author">Author</label>
-            <input type="text" id="author" name="author" placeholder="Gabo" [(ngModel)] = "addBookRequest.author" required>
-        </div>
-        <div>
-            <label for="read">Read</label>
-            <select id="read" name="read" [(ngModel)] = "addBookRequest.read">
-                <option [ngValue]="false">No</option>
-                <option [ngValue]="true">Yes</option>
-            </select>
-        </div>
-        <div>
-            <button type="submit" class="add_btn">Add Book</button>
-            <button class="back_btn" type="button">
-                <a routerLink="">Back</a>
-            </button>
-        </div>
+    <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput type="text" id="title" name="title" [(ngModel)] = "addBookRequest.title" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Author</mat-label>
+        <input matInput type="text" id="author" name="author" [(ngModel)] = "addBookRequest.author" required>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Read</mat-label>
+        <mat-select id="read" name="read" [(ngModel)] = "addBookRequest.read">
+            <mat-option [value]="false">No</mat-option>
+            <mat-option [value]="true">Yes</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <div class="btns_container">
+        <button mat-raised-button color="primary" type="submit" class="add_btn">Add Book</button>
+        <button mat-raised-button color="warn" class="back_btn" type="button">
+            <a routerLink="">Back</a>
+        </button>
+    </div>
     </form>
 </div>
+
 
