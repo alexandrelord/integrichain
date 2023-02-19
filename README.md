@@ -2,30 +2,14 @@
 
 ## Table of Contents
 
-1. [Prerequisites](#prerequisites)
-2. [Clone the Repo](#clone-the-repo)
-3. [Docker](#docker)
-4. [Run the App Locally](#run-the-app-locally)
-5. [Backend](#backend)
-6. [Frontend](#frontend)
-7. [Swagger](#swagger)
-8. [Icebox](#icebox)
+1. [Run the App with Docker](#run-the-app-with-docker)
+2. [Run the App Locally](#run-the-app-locally)
+3. [Backend](#backend)
+4. [Frontend](#frontend)
+5. [Swagger](#swagger)
+6. [Icebox](#icebox)
 
-## Prerequisites
-
-Make sure you have the following installed on your machine if you decide to run the app locally on your machine:
-
-1. Python3.9.6 (https://www.python.org/downloads/)
-2. Angular CLI: 14.2.10 (https://angular.io/cli)
-
-## Clone the Repo
-
-Clone the repo to your local machine using the following command:
-```console
-$ git clone git@github.com:alexandrelord/integrichain.git
-```
-
-## Docker
+## Run the App with Docker
 
 Make sure you have the Docker app open. If you don't have Docker installed, you can download it [here](https://www.docker.com/products/docker-desktop).
 Use the following command to start the Docker containers:
@@ -35,6 +19,13 @@ $ docker-compose up
 
 ## Run the App Locally
 If you don't want to use Docker, you can follow the instructions below to run the app locally.
+
+## Prerequisites
+
+Make sure you have the following installed on your machine:
+
+1. Python3.9.6 (https://www.python.org/downloads/)
+2. Angular CLI: 14.2.10 (https://angular.io/cli)
 
 ## Backend
 
@@ -82,12 +73,23 @@ Navigate to the frontend folder and run the following command:
 $ ng serve --open
 ```
 
+#### Books List Page
+<img src="img/books_list.png" width=100% />
+
+#### Book Update Page
+<img src="img/update_book.png" width=100% />
+
+#### Book Add Page
+<img src="img/add_book.png" width=100% />
+
+
 Server will be running on http://localhost:4200
 
 ## Swagger
 
-Swagger documentation is available at http://localhost:5000/api/ui
+To view the Swagger documentation, navigate to http://localhost:5000/api/ui
 
+<img src="img/swag_doc.png" width=100% />
 
 ## Icebox
 1. Implement integration tests(pytest or unittest)
